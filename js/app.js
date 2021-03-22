@@ -1,4 +1,6 @@
 'use strict';
+
+
 const Seattle = {
   name:'SEATTLE',
   maximum:65,
