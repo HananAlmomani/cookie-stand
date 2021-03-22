@@ -1,5 +1,6 @@
 'use strict';
 
+
 let Arr1=[];
 let Arr2=['6am' ,'7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'];
 let total1=0;
@@ -15,6 +16,43 @@ function Cookies(name, maximum,minimum,avgCustomer){
 
 Cookies.prototype.getavg= function(min,max){
   this.average = Math.floor(getRandomNumber(min,max)*this.avgCustomer);
+
+
+const Seattle = {
+  name:'SEATTLE',
+  maximum:65,
+  minimum:23,
+  avgCustomer:6.3,
+  Arr1:[],
+  Arr2:['6am' ,'7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'],
+  average:0,
+  total:0,
+  getavg: function(min,max){
+    this.average = Math.floor(getRandomNumber(min,max)*this.avgCustomer);
+  },
+  render: function(){
+    const container = document.getElementById('Objects');
+    const articleEl = document.createElement('article');
+    container.appendChild(articleEl);
+    const h2El = document.createElement('h2');
+    articleEl.appendChild(h2El);
+    h2El.textContent = this.name;
+    const ulEl = document.createElement('ul');
+    articleEl.appendChild(ulEl);
+    for(let i=0; i<this.Arr2.length; i++)
+    {
+      const liEl = document.createElement('li');
+      ulEl.appendChild(liEl);
+      this.getavg(this.minimum,this.maximum);
+      this.Arr1.push(this.average);
+      liEl.textContent = `${this.Arr2[i]}: ${this.Arr1[i]}  cookies `;
+      this.total=this.total+this.Arr1[i];
+    }
+    const liE2 =document.createElement('li');
+    ulEl.appendChild(liE2);
+    liE2.textContent=`Total cookies : ${this.total}`;
+  }
+
 };
 Cookies.prototype.render=function(){
   const dataRow = document.createElement('tr');
