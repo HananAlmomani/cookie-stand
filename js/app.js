@@ -1,8 +1,8 @@
 'use strict';
+let Arr4=[];
 
-let Arr1=[];
+// let Arr=[];
 let Arr2=['6am' ,'7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'];
-let total1=0;
 function Cookies(name, maximum,minimum,avgCustomer){
   this.name = name;
   this.maximum= maximum;
@@ -11,6 +11,7 @@ function Cookies(name, maximum,minimum,avgCustomer){
   this.total = 0;
   this.arr1 = [];
   this.average=0;
+  Arr4.push(this);
 }
 
 Cookies.prototype.getavg= function(min,max){
@@ -43,27 +44,37 @@ h.appendChild(th1El);
 for (let i=0 ; i<Arr2.length;i++)
 {
   const th2El = document.createElement('th');
- h.appendChild(th2El);
+  h.appendChild(th2El);
   th2El.textContent=Arr2[i];
 }
 const th3El = document.createElement('th');
 h.appendChild(th3El);
 th3El.textContent='Daily Location Total';
-function getfooter(){
 
+function getfooter(){
   const headerRow = document.createElement('tr');
   h.appendChild(headerRow);
   const th1El = document.createElement('td');
   headerRow.appendChild(th1El);
   th1El.textContent='           ';
-  for (let i=0 ; i<=Arr2.length;i++)
+  let arr3=[];
+  let total2=0;
+  for (let i=0 ; i<Arr2.length;i++)
   {
-    const th2El = document.createElement('th');
-    headerRow.appendChild(th2El);
-    Arr1.push(Number(th2El) );
-    total1+=Arr1[i] ;
-    th2El.textContent=total1;
+    let td2el = document.createElement('th');
+    let total1=0;
+    for(let y=0;y<Arr4.length;y++)
+    {
+      total1+=Arr4[y].arr1[i];
+      total2+=Arr4[y].arr1[i];
+    }
+    arr3.push(total1);
+    td2el.textContent=total1;
+    headerRow.appendChild(td2el);
   }
+  let td3el = document.createElement('th');
+  headerRow.appendChild(td3el);
+  td3el.textContent=total2;
 }
 
 const Seatle = new Cookies ('SEATLE',65,23,6.3);
