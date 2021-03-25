@@ -120,6 +120,24 @@ Lima.render();
 getfooter();
 
 
+let cookiesForm = document.getElementById('cookies');
+cookiesForm.addEventListener('submit', addNewlocation);
+function addNewlocation(event) {
+  event.preventDefault();
+  let nameOflocation = event.target.name.value;
+  let maximum = event.target.maximum.value;
+  let minimum = event.target.minimum.value;
+  let avgCustomer = event.target.avgCustomer.value;
+  let location2 = new Cookies(nameOflocation,maximum ,minimum ,avgCustomer );
+  location2.getavg(location2.minimum,location2.maximum);
+  location2.render();
+  removeRow();
+  getfooter();
+}
+function removeRow(){
+  h.deleteRow(Arr4.length-1) ;
+}
+
 
 
 
